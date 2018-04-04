@@ -74,6 +74,7 @@ public class CircGraphPane extends JPanel {
                 timer.stop();
                 timer = null;
             }
+            removeMouseListener(getMouseListeners()[0]);
         } else {
             path = algorithm.nextStep();
             repaint();

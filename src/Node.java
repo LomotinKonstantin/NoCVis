@@ -19,6 +19,10 @@ public class Node {
         ellipse = new Ellipse2D.Double();
     }
 
+    public int getNum() {
+        return num;
+    }
+
     public void setCoords(int x, int y, int text_x, int text_y) {
         this.x = x;
         this.y = y;

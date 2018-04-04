@@ -82,7 +82,7 @@ public class CircGraphPane extends JPanel {
         }
     }
 
-    protected void updateVertices() {
+    protected void updateVertices(Graphics2D g2) {
         Dimension size = getSize();
         int center_x = size.width / 2;
         int center_y = size.height / 2;
@@ -94,15 +94,19 @@ public class CircGraphPane extends JPanel {
         // Устанавливаем радиус вершины
         int node_rad = (int) (graph_rad / nodes_num);
         // Устанавливаем радиус текста
-        int text_rad = graph_rad + node_rad * 2;
+        int text_rad = graph_rad + node_rad / 2 + g2.getFontMetrics().stringWidth("444");
         for (int i = 0; i < nodes_num; ++i) {
             double sin = sin(-angle * i - PI);
             double cos = cos(-angle * i - PI);
             int node_x = center_x + (int)(graph_rad * sin);
             int node_y = center_y + (int)(graph_rad * cos);
-            int text_x = center_x + (int)(text_rad * sin);
+            int offset_x = g2.getFontMetrics(g2.getFont()).stringWidth(
+                    String.valueOf(nodes[i].getNum())) / 2;
+//            int offset_y = g2.getFontMetrics(g2.getFont()).getHeight() / 2;
+            int text_x = center_x + (int)(text_rad * sin) - offset_x;
             int text_y = center_y + (int)(text_rad * cos);
-            nodes[i].setCoords(node_x, node_y, text_x, text_y);
+            nodes[i].setCoords(node_x, node_y,
+                    text_x, text_y);
             nodes[i].setRadius(node_rad);
         }
     }
@@ -131,7 +135,7 @@ public class CircGraphPane extends JPanel {
     }
 
     protected void drawGraph(Graphics2D g2) {
-        updateVertices();
+        updateVertices(g2);
         drawConnections(g2);
         drawVertices(g2);
     }

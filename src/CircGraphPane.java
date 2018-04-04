@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import static java.lang.Math.*;
 
@@ -75,7 +76,9 @@ public class CircGraphPane extends JPanel {
                 timer.stop();
                 timer = null;
             }
-            removeMouseListener(getMouseListeners()[0]);
+            MouseListener[] ml = getMouseListeners();
+            if (ml.length > 0)
+                removeMouseListener(getMouseListeners()[0]);
         } else {
             path = algorithm.nextStep();
             repaint();

@@ -5,9 +5,13 @@ public class Demo extends JFrame{
 
     Demo() {
         super();
-        int[] comp = {1, 34};
+        int[] comp = {1, 6};
+        int num = 11;
         setLayout(new BoxLayout(getContentPane(), BoxLayout.LINE_AXIS));
-        add(new CircGraphPane(100, comp));
+        CircGraphPane cgp = new CircGraphPane(11, comp);
+        cgp.setAlgorithm(new DemoAlgorithm(num, comp, 0, 3));
+        cgp.start(1000);
+        add(cgp);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(new Dimension(600, 600));
     }

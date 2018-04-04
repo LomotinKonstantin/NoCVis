@@ -5,9 +5,9 @@ public class Demo extends JFrame{
 
     Demo() {
         super();
-        int[] comp = {1, 3};
+        int[] comp = {1, 34};
         setLayout(new BoxLayout(getContentPane(), BoxLayout.LINE_AXIS));
-        add(new CircGraphPane(10, comp));
+        add(new CircGraphPane(100, comp));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(new Dimension(600, 600));
     }

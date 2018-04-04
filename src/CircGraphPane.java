@@ -92,7 +92,7 @@ public class CircGraphPane extends JPanel {
         // Устанавливаем радиус циркулянта. Он будет равен 40% от минимального измерения
         int graph_rad = (int) (0.8 * min(center_x, center_y));
         // Устанавливаем радиус вершины
-        int node_rad = (int) (graph_rad / nodes_num);
+        int node_rad = max(graph_rad / nodes_num, 5);
         // Устанавливаем радиус текста
         int text_rad = graph_rad + node_rad / 2 + g2.getFontMetrics().stringWidth("444");
         for (int i = 0; i < nodes_num; ++i) {

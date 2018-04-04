@@ -8,6 +8,7 @@ public class Node {
     private Color color;
     private int radius;
     private Ellipse2D.Double ellipse;
+    public enum con_type {COMMON, HIGHLIGHT, FOUND}
 
     public static final int NONE = 0,
                             START = 1,
@@ -62,9 +63,20 @@ public class Node {
         return this.num == ((Node)obj).num;
     }
 
-    public void connect(Node n, Graphics2D g2) {
-        g2.setPaint(Color.BLACK);
-        g2.setStroke(new BasicStroke(2));
+    public void connect(Node n, Graphics2D g2, con_type type) {
+        switch (type) {
+            case COMMON:
+                g2.setPaint(Color.BLACK);
+                g2.setStroke(new BasicStroke(2));
+                break;
+            case HIGHLIGHT:
+                g2.setPaint(Color.ORANGE);
+                g2.setStroke(new BasicStroke(3));
+                break;
+            case FOUND:
+                g2.setPaint(Color.GREEN);
+                g2.setStroke(new BasicStroke(3));
+        }
         g2.drawLine(x, y, n.x, n.y);
     }
 }

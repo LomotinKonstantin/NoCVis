@@ -114,7 +114,7 @@ public class CircGraphPane extends JPanel {
         for (int node = 0; node < nodes_num; ++node) {
             for (int i : components) {
                 int next = (node + i) % nodes_num;
-                nodes[node].connect(nodes[next], g2);
+                nodes[node].connect(nodes[next], g2, Node.con_type.HIGHLIGHT);
             }
         }
     }

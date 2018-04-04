@@ -34,6 +34,7 @@ public class CircGraphPane extends JPanel {
             n.setNum(i);
             nodes[i] = n;
         }
+        path = new int[0];
         stepPerformer = e -> performStep();
         timer = null;
     }
@@ -114,7 +115,17 @@ public class CircGraphPane extends JPanel {
         for (int node = 0; node < nodes_num; ++node) {
             for (int i : components) {
                 int next = (node + i) % nodes_num;
-                nodes[node].connect(nodes[next], g2, Node.con_type.HIGHLIGHT);
+                nodes[node].connect(nodes[next], g2, Node.con_type.COMMON);
+            }
+        }
+        if (algorithm != null) {
+            Node.con_type type;
+            if (algorithm.isFinished())
+                type = Node.con_type.FOUND;
+            else
+                type = Node.con_type.HIGHLIGHT;
+            for (int i = 0; i < path.length - 1; ++i) {
+                nodes[path[i]].connect(nodes[path[i + 1]], g2, type);
             }
         }
     }

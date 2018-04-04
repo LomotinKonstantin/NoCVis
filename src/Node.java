@@ -41,7 +41,7 @@ public class Node {
     public void markAs(int type) {
         switch (type) {
             case NONE:
-                color = new Color(0xFF888888, true);
+                color = new Color(0xFF000000, true);
                 break;
             case START:
                 color = new Color(0xFFFF0000, true);
@@ -70,7 +70,7 @@ public class Node {
     public void connect(Node n, Graphics2D g2, con_type type) {
         switch (type) {
             case COMMON:
-                g2.setPaint(Color.BLACK);
+                g2.setPaint(Color.GRAY);
                 g2.setStroke(new BasicStroke(2));
                 break;
             case HIGHLIGHT:

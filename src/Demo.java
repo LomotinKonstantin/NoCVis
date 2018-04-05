@@ -8,12 +8,12 @@ public class Demo extends JFrame{
 
     Demo() {
         super();
-        int[] comp = {1, 6};
-        int num = 11;
+        int[] comp = {1, 43};
+        int num = 117;
         setLayout(new BoxLayout(getContentPane(), BoxLayout.LINE_AXIS));
-        CircGraphPane cgp = new CircGraphPane(11, comp);
-        cgp.setAlgorithm(new DemoAlgorithm(num, comp, 0, 3));
-        cgp.start(1000);
+        CircGraphPane cgp = new CircGraphPane(num, comp);
+        cgp.setAlgorithm(new DemoAlgorithm(num, comp, 0, 59));
+        cgp.start(0);
         add(cgp);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(new Dimension(600, 600));

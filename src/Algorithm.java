@@ -19,4 +19,14 @@ public interface Algorithm {
      */
     boolean isFinished();
 
+    /**
+     * @return номер стартовой вершины
+     */
+    int startNum();
+
+    /**
+     * @return номер конечной вершины
+     */
+    int finishNum();
+
 }

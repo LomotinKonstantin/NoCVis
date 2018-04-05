@@ -57,6 +57,16 @@ public class DemoAlgorithm implements Algorithm {
     }
 
     @Override
+    public int startNum() {
+        return start;
+    }
+
+    @Override
+    public int finishNum() {
+        return stop;
+    }
+
+    @Override
     public int[] nextStep() {
         if (!finished) {
             if (curr_branch < tree.size() - 1)

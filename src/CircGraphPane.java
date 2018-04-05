@@ -90,6 +90,12 @@ public class CircGraphPane extends JPanel {
      */
     public void setAlgorithm(Algorithm algorithm) {
         this.algorithm = algorithm;
+        for (Node n : nodes)
+            n.markAs(Node.NONE);
+        int start = algorithm.startNum();
+        int dest = algorithm.finishNum();
+        nodes[start].markAs(Node.START);
+        nodes[dest].markAs(Node.DEST);
     }
 
     /**

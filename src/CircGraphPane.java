@@ -28,8 +28,8 @@ public class CircGraphPane extends JPanel {
 
     /**
      *
-     * @param nodes_num число вершин в графе
-     * @param components образующие циркулянта
+     * @param nodes_num Число вершин в графе
+     * @param components Образующие циркулянта
      */
     CircGraphPane(int nodes_num, int[] components) {
         super();
@@ -52,7 +52,7 @@ public class CircGraphPane extends JPanel {
 
     /**
      * Запустить визуализацию с таймером.
-     * @param interval_ms интервал между шагами алгоритма (в миллисекундах).
+     * @param interval_ms Интервал между шагами алгоритма (в миллисекундах).
      */
     public void start(int interval_ms) {
         timer = new Timer(interval_ms, stepPerformer);
@@ -86,7 +86,7 @@ public class CircGraphPane extends JPanel {
 
     /**
      * Установить алгоритм в виджет
-     * @param algorithm
+     * @param algorithm Объект, реализующий интерфейс Algorithm
      */
     public void setAlgorithm(Algorithm algorithm) {
         this.algorithm = algorithm;
@@ -119,7 +119,7 @@ public class CircGraphPane extends JPanel {
 
     /**
      * Рассчитать новое положение вершин
-     * @param g2 графический объект для рисования
+     * @param g2 Графический объект для рисования
      */
     protected void updateVertices(Graphics2D g2) {
         Dimension size = getSize();
@@ -152,7 +152,7 @@ public class CircGraphPane extends JPanel {
 
     /**
      * Отрисовать вершины
-     * @param g2 графический объект для рисования
+     * @param g2 Графический объект для рисования
      */
     protected void drawVertices(Graphics2D g2) {
         for (Node n : nodes) n.display(g2);
@@ -160,7 +160,7 @@ public class CircGraphPane extends JPanel {
 
     /**
      * Отрисовать грани
-     * @param g2 графический объект для рисования
+     * @param g2 Графический объект для рисования
      */
     protected void drawConnections(Graphics2D g2) {
         for (int node = 0; node < nodes_num; ++node) {
@@ -183,7 +183,7 @@ public class CircGraphPane extends JPanel {
 
     /**
      * Отрисовать весь граф
-     * @param g2 графический объект для рисования
+     * @param g2 Графический объект для рисования
      */
     protected void drawGraph(Graphics2D g2) {
         updateVertices(g2);

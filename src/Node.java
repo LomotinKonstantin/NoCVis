@@ -23,7 +23,7 @@ public class Node {
     }
 
     /**
-     * @return номер вершины
+     * @return Номер вершины
      */
     public int getNum() {
         return num;
@@ -31,10 +31,10 @@ public class Node {
 
     /**
      * Установить координаты текста и вершины
-     * @param x координата x вершины
-     * @param y координата y вершины
-     * @param text_x координата x номера
-     * @param text_y координата y номера
+     * @param x Координата x вершины
+     * @param y Координата y вершины
+     * @param text_x Координата x номера
+     * @param text_y Координата y номера
      */
     public void setCoords(int x, int y, int text_x, int text_y) {
         this.x = x;
@@ -45,7 +45,7 @@ public class Node {
 
     /**
      * Установить номер вершины
-     * @param num номер вершины
+     * @param num Номер вершины
      */
     public void setNum(int num) {
         this.num = num;
@@ -53,7 +53,7 @@ public class Node {
 
     /**
      * Установить радиус вершины
-     * @param radius радиус вершины
+     * @param radius Радиус вершины
      */
     public void setRadius(int radius) {
         this.radius = radius;
@@ -61,7 +61,7 @@ public class Node {
 
     /**
      * Пометить вершину как старт (красный), цель (синий) или как обычную вершину (черный)
-     * @param type
+     * @param type Тип вершины (NONE, START, DEST)
      */
     public void markAs(int type) {
         switch (type) {
@@ -79,7 +79,7 @@ public class Node {
 
     /**
      * Отрисовать вершину
-     * @param g2 графический объект для рисования
+     * @param g2 Графический объект для рисования
      */
     public void display(Graphics2D g2) {
         ellipse.setFrame(x - radius/2, y - radius/2, radius, radius);
@@ -92,7 +92,7 @@ public class Node {
 
     /**
      * Переопределение метода для сравнения узлов
-     * @param obj объект для сравнения
+     * @param obj Объект для сравнения
      * @return true, если номера узлов равны, иначе false
      */
     public boolean equals(Object obj) {
@@ -103,9 +103,9 @@ public class Node {
 
     /**
      * Отрисовать соединение между узлами
-     * @param n узел, с которым нужно отрисовать связь
-     * @param g2 графический объект для рисования
-     * @param type тип связи (обычный, подсвеченный, найденный путь)
+     * @param n Узел, с которым нужно отрисовать связь
+     * @param g2 Графический объект для рисования
+     * @param type Тип связи (обычный, подсвеченный, найденный путь)
      */
     public void connect(Node n, Graphics2D g2, con_type type) {
         switch (type) {

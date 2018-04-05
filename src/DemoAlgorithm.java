@@ -6,6 +6,7 @@ import static java.lang.Math.min;
 /**
  *  Алгоритм поиска, основанный на обходе дерева в ширину.
  *  Посещенные вершины отбрасываются.
+ *  Очень неэффективный алгоритм, но гарантированно находит кратчайший путь.
  *  **/
 public class DemoAlgorithm implements Algorithm {
 
@@ -18,10 +19,10 @@ public class DemoAlgorithm implements Algorithm {
     private int curr_branch;                        // текущий маршрут для визуализации
 
     /**
-     * @param nodes_num число узлов в сети
-     * @param components образующие циркулянта
-     * @param start номер стартовой вершины
-     * @param stop номер конечной вершины
+     * @param nodes_num Число узлов в сети
+     * @param components Образующие циркулянта
+     * @param start Номер стартовой вершины
+     * @param stop Номер конечной вершины
      */
     DemoAlgorithm(int nodes_num, int[] components, int start, int stop) {
         this.nodes_num = nodes_num;
@@ -42,8 +43,8 @@ public class DemoAlgorithm implements Algorithm {
      * Обертка для преобразования вектора Integer в массив int.
      * Дженерики не могут иметь примитивы в качестве шаблонов, а
      * автоматического приведения Integer[] к int[] в Java нет.
-     * @param arrl вектор с объектами типа Integer
-     * @return массив int
+     * @param arrl Вектор с объектами типа Integer
+     * @return Массив int
      */
     /* Удобное преобразование вектора Integer в массив int */
     public static int[] arrlToArr(ArrayList<Integer> arrl) {

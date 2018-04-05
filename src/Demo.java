@@ -1,6 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Класс, демонстрирующий работу визуализатора
+ */
 public class Demo extends JFrame{
 
     Demo() {

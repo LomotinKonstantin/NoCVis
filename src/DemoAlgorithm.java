@@ -3,11 +3,12 @@ import java.util.Arrays;
 
 import static java.lang.Math.min;
 
-public class DemoAlgorithm implements Algorithm {
 /**
  *  Алгоритм поиска, основанный на обходе дерева в ширину.
  *  Посещенные вершины отбрасываются.
  *  **/
+public class DemoAlgorithm implements Algorithm {
+
     protected int nodes_num;                        // число узлов
     protected int start, stop;                      // номера стартового и конечного узлов
     protected int[] components;                     // образующие
@@ -16,6 +17,12 @@ public class DemoAlgorithm implements Algorithm {
     private ArrayList<ArrayList<Integer>> tree;     // список всех рассчитанных путей
     private int curr_branch;                        // текущий маршрут для визуализации
 
+    /**
+     * @param nodes_num число узлов в сети
+     * @param components образующие циркулянта
+     * @param start номер стартовой вершины
+     * @param stop номер конечной вершины
+     */
     DemoAlgorithm(int nodes_num, int[] components, int start, int stop) {
         this.nodes_num = nodes_num;
         this.components = components;
@@ -31,6 +38,13 @@ public class DemoAlgorithm implements Algorithm {
     }
 
 
+    /**
+     * Обертка для преобразования вектора Integer в массив int.
+     * Дженерики не могут иметь примитивы в качестве шаблонов, а
+     * автоматического приведения Integer[] к int[] в Java нет.
+     * @param arrl вектор с объектами типа Integer
+     * @return массив int
+     */
     /* Удобное преобразование вектора Integer в массив int */
     public static int[] arrlToArr(ArrayList<Integer> arrl) {
         Integer[] temp = arrl.toArray(new Integer[0]);
@@ -60,7 +74,9 @@ public class DemoAlgorithm implements Algorithm {
         return finished;
     }
 
-    /* Поиск пути в ширину. Все промежуточные шаги сохраняюся в tree */
+    /**
+     * Поиск пути в ширину. Все промежуточные шаги сохраняюся в tree.
+     */
     private void buildTree() {
         ArrayList<Integer> visited = new ArrayList<>();
         visited.add(start);

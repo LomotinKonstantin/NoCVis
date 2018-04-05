@@ -7,6 +7,10 @@ import java.awt.event.MouseListener;
 
 import static java.lang.Math.*;
 
+/**
+ *  Виджет для отображения произвольного циркулянта и визуализации алгоритма
+ *  поиска пути.
+ */
 public class CircGraphPane extends JPanel {
 
     /* C(nodes_num; components) */
@@ -20,7 +24,13 @@ public class CircGraphPane extends JPanel {
     protected Timer timer;
 
     public final static double TWO_PI = 6.263;
+    private Graphics g;
 
+    /**
+     *
+     * @param nodes_num число вершин в графе
+     * @param components образующие циркулянта
+     */
     CircGraphPane(int nodes_num, int[] components) {
         super();
 
@@ -40,11 +50,18 @@ public class CircGraphPane extends JPanel {
         timer = null;
     }
 
+    /**
+     * Запустить визуализацию с таймером.
+     * @param interval_ms интервал между шагами алгоритма (в миллисекундах).
+     */
     public void start(int interval_ms) {
         timer = new Timer(interval_ms, stepPerformer);
         timer.start();
     }
 
+    /**
+     *  Запустить визуализацию. Каждый следующий шаг происходит по щелчку мышью.
+     */
     public void start() {
         addMouseListener(new MouseAdapter() {
             @Override
@@ -55,7 +72,9 @@ public class CircGraphPane extends JPanel {
         });
     }
 
+    @Override
     public void paint(Graphics g) {
+        this.g = g;
         super.paint(g);
         Graphics2D g2 = (Graphics2D) g;
         RenderingHints rh = new RenderingHints(
@@ -65,10 +84,17 @@ public class CircGraphPane extends JPanel {
         drawGraph(g2);
     }
 
+    /**
+     * Установить алгоритм в виджет
+     * @param algorithm
+     */
     public void setAlgorithm(Algorithm algorithm) {
         this.algorithm = algorithm;
     }
 
+    /**
+     * Получить и отрисовать очередной шаг алгоритма
+     */
     protected void performStep() {
         if (algorithm.isFinished()) {
             path = algorithm.path();
@@ -85,6 +111,10 @@ public class CircGraphPane extends JPanel {
         }
     }
 
+    /**
+     * Рассчитать новое положение вершин
+     * @param g2 графический объект для рисования
+     */
     protected void updateVertices(Graphics2D g2) {
         Dimension size = getSize();
         int center_x = size.width / 2;
@@ -114,10 +144,18 @@ public class CircGraphPane extends JPanel {
         }
     }
 
+    /**
+     * Отрисовать вершины
+     * @param g2 графический объект для рисования
+     */
     protected void drawVertices(Graphics2D g2) {
         for (Node n : nodes) n.display(g2);
     }
 
+    /**
+     * Отрисовать грани
+     * @param g2 графический объект для рисования
+     */
     protected void drawConnections(Graphics2D g2) {
         for (int node = 0; node < nodes_num; ++node) {
             for (int i : components) {
@@ -137,6 +175,10 @@ public class CircGraphPane extends JPanel {
         }
     }
 
+    /**
+     * Отрисовать весь граф
+     * @param g2 графический объект для рисования
+     */
     protected void drawGraph(Graphics2D g2) {
         updateVertices(g2);
         drawConnections(g2);
